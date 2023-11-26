@@ -1,0 +1,51 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    {% include 'users/navbar.html' %}
+    <h6 class="mb-3"></h6>
+    <div class="text-center pt-3 pb-2">
+        <h2 class="my-4">Task List</h2>
+    </div>
+    {% if lists %}
+    <div class="list-group list-group-light">
+        {% for list in lists %}
+            <li class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2" style="background-color: #f4f6f7;" id="list-{{list.id}}">
+                <div class="d-flex align-items-center">
+                    <a style="text-decoration: none;" class="btn btn-link link-dark"  href="{% url 'detail_list' list.id %}">{{ list.title }}</a>
+                </div>
+                <div>
+                    <a id="delete-{{list.id}}" class="text-danger list-actions" data-mdb-toggle="tooltip" title="Delete list">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <a href="{% url 'create_list' %}" class="btn btn-lg btn-light float-end" style="background-color: #db8ac2;outline: none; color: white;">Add List</a>
+
+    <!-- JavaScript -->
+    <script type="text/javascript">
+        $(".list-actions").click(function(e){
+            e.preventDefault();
+            console.log("clicked")
+            var id = this.id
+            var list_id = this.id.split("-")[1]
+            if (id.includes("delete")){
+                console.log("delete");
+                console.log(list_id);
+                $.ajax({
+                    type: "POST",
+                    url: "/delete/lists/" + list_id,
+                    data: {
+                        csrfmiddlewaretoken: "{{ csrf_token }}",
+                    },
+                    success: function ( data ) {
+                        $("#list-"+list_id).remove()
+                        location.reload();
+                    }
+                });
+            }
+        });
+    </script>
+    {% endblock %}
