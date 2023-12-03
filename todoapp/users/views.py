@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect, render
 
 from .forms import RegisterForm
-from list.models import List
+from todoapp.list.models import List
 
 
 

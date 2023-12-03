@@ -1,6 +1,6 @@
 from typing import Any
 from django.forms import ModelForm
-from list.models import List, Task
+from todoapp.list.models import List, Task
 
 
 
