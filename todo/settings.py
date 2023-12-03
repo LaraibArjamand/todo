@@ -21,27 +21,20 @@ env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-DOCKER = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if DOCKER:
-    SECRET_KEY = env.str("SECRET_KEY")
-else:
-    SECRET_KEY = "django-insecure-@&55sc8_y0=%z)a%)mmd-o@e_myht(kwwbjw2r%$=qjo&7tdl@"
+
+SECRET_KEY = "django-insecure-@&55sc8_y0=%z)a%)mmd-o@e_myht(kwwbjw2r%$=qjo&7tdl@"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if DOCKER:
-    DEBUG = env.int("DEBUG")
-else:
-    DEBUG = 1
 
-if DOCKER:
-    ALLOWED_HOSTS = env.str("DJANGO_ALLOWED_HOSTS").split(" ")
-else:
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+DEBUG = 1
+
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 # Application definition
 
@@ -94,19 +87,8 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-if DOCKER:
-    DATABASES = {
-        "default": {
-            "ENGINE": env.str("SQL_ENGINE"),
-            "NAME": env.str("SQL_DATABASE"),
-            "USER": env.str("SQL_USER"),
-            "PASSWORD": env.str("SQL_PASSWORD"),
-            "HOST": env.str("SQL_HOST"),
-            "PORT": env.str("SQL_PORT"),
-        }
-    }
-else:
-    DATABASES = {
+
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
