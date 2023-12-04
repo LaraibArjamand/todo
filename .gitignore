@@ -19,6 +19,8 @@ parts/
 sdist/
 var/
 wheels/
+bin/
+include/
 
 # Django
 *.log
@@ -39,6 +41,7 @@ env/
 venv
 venv.bak/
 venv/
+pyenv.cfg
 
 # IDEs
 .DS_Store
