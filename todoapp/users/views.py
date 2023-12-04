@@ -4,9 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect, render
 
-from .forms import RegisterForm
 from todoapp.list.models import List
 
+from .forms import RegisterForm
 
 
 @login_required(login_url="/login")
@@ -27,7 +27,7 @@ def sign_up(request):
         if request.user.is_authenticated:
             return redirect("home")
         form = RegisterForm()
-    return render(request=request, template_name="users/register.html", context={"register_form":form})
+    return render(request=request, template_name="users/register.html", context={"register_form": form})
 
 
 def sign_in(request):
@@ -40,12 +40,12 @@ def sign_in(request):
             if user is not None:
                 login(request, user)
                 return redirect("home")
-    else:      
+    else:
         form = AuthenticationForm()
-    return render(request=request, template_name="users/login.html", context={"login_form":form})
+    return render(request=request, template_name="users/login.html", context={"login_form": form})
 
 
 def signout(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
-    return redirect("login") 
+    return redirect("login")

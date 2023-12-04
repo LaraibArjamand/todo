@@ -1,10 +1,10 @@
 {% extends "users/base.html" %}
 
-{% block content %}      
+{% block content %}
 
 {% load crispy_forms_tags %}
 
-<!-- Login --> 
+<!-- Login -->
 <div class="container py-5">
   <h1>Login</h1>
   <form method="POST">
@@ -29,7 +29,7 @@
     <!-- End Display Messages -->
 
     {{ login_form|crispy }}
-    
+
     <button class="btn btn-primary" type="submit">Login</button>
   </form>
   <p class="text-center">Don't have an account? <a href="{% url 'sign_up' %}">Create an account</a>.</p>

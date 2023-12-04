@@ -1,5 +1,5 @@
 # todo
-Project Setup 
+Project Setup
 ================
 
 mkdir -p local

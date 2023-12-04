@@ -15,12 +15,12 @@ class RegisterForm(UserCreationForm):
         if self.cleaned_data["first_name"] == '':
             raise ValidationError("First name is required.")
         return self.cleaned_data["first_name"]
-    
+
     def clean_last_name(self):
         if self.cleaned_data["last_name"] == '':
             raise ValidationError("Last name is required.")
         return self.cleaned_data["last_name"]
-           
+
     def clean_email(self):
         if self.cleaned_data["email"] == '':
             raise ValidationError("Email is required.")

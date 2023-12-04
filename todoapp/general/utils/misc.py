@@ -1,5 +1,6 @@
 import yaml
 
+
 def yaml_coerce(value):
     # Convert value to proper python
     if isinstance(value, str):

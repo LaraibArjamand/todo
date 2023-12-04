@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import create_list, detail_list, create_task, delete_task, delete_list, mark_task
+from .views import create_list, create_task, delete_list, delete_task, detail_list, mark_task
 
 urlpatterns = [
     path("create/lists", create_list, name="create_list"),

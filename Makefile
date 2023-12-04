@@ -20,4 +20,3 @@ superuser:
 
 .PHONY: migrations
 migrations: migrate makemigrations;
-

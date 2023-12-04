@@ -9,12 +9,12 @@ class List(models.Model):
 
     def __str__(self) -> str:
         return self.title
-    
+
+
 class Task(models.Model):
     description = models.TextField()
-    list = models.ForeignKey(List ,on_delete=models.CASCADE)
+    task_list = models.ForeignKey(List, on_delete=models.CASCADE)
     is_completed = models.BooleanField(default=False)
-    
+
     def __str__(self) -> str:
         return self.description
-

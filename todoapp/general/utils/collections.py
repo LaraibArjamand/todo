@@ -1,5 +1,5 @@
 def deep_update(base_dict, update_dict):
-    # TODO: Add comments 
+    # TODO: Add comments
     for key, value in update_dict.items():
         if isinstance(value, dict):
             base_dict_value = base_dict.get(key)
@@ -8,6 +8,5 @@ def deep_update(base_dict, update_dict):
             else:
                 base_dict[key] = value
         else:
-                base_dict[key] = value
+            base_dict[key] = value
     return base_dict
-    
